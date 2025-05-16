@@ -104,7 +104,8 @@ class Person extends \Faker\Provider\Person
      */
     public function tcNo()
     {
-        $randomDigits = static::numerify('#########');
+        $firstDigit = static::randomDigitNotNull();
+        $randomDigits = $firstDigit . static::numerify('########');
         $checksum = self::tcNoChecksum($randomDigits);
 
         return $randomDigits . $checksum;
